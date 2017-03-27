@@ -1,0 +1,79 @@
+ARROW FUNCTIONS in a NutShell
+
+Arrow functions, also know as ‘fat arrow’ functions,  were introduced in ES6 as
+a way to write small, inline,  single purpose functions that can be be implicitly
+returned. Arrow functions do not bind its own this, arguments, super, or new.target.”
+, (mdn) so care should be taken when using them.
+
+
+Let’s take a look at a standard random number generator function.
+
+function random(){
+return Math.floor(Math.random()* 20)+ 1;
+}
+
+As expected, this will return a random number between 1 and 20. But how might it
+look as an arrow function?   When writing an arrow function, the first thing to
+remember is that it does not require the ‘function” keyword. And, because all
+arrow function are anonymous it also doesn’t require a name. In fact you can’t
+ name them! Instead you add in a ‘=>’ after the parameters bubble.
+
+() => {return Math.floor(Math.random()* 20)+ 1};
+
+This function will output the same as the one above it. In fact, we can take it
+ one step further and make it even smaller.
+
+() => Math.floor(Math.random()* 20)+ 1;
+
+This is completely legal with arrow functions because they are implicitly
+returned when the return keyword and curly brackets are removed.
+To see this, we will need to store it in a variable and then we can call it
+ just like any other function.
+
+let random = () => Math.floor(Math.random()* 20)+ 1;
+console.log( random() );
+
+Keep in mind that implicit return ONLY happens for single statement arrow
+functions.(strongloop). If curly brackets are used, you must use the return keyword.
+
+Arrow functions can take parameters like regular functions too.
+
+
+SINGLE PARAMETER ARROW FUNCTION
+let random = ( x ) => Math.floor(Math.random()* x )+ 1;
+console.log( random(20) );
+
+MULTIPLE PARAMETER ARROW FUNCTION
+let random = ( x, y ) => Math.floor(Math.random()* (x * y) )+ 1;
+console.log( random(4, 5) );
+
+
+Other Things to Note
+So now that you see how arrow functions are written out, what else is there
+to know about them? Quite a lot, actually. Despite their slim size, there is a
+lot to understand. Here are some key points.
+
+	The value of this inside of the function is determined by where the arrow
+  function is defined not where it is used. (nczonline) . Also, this inside an
+   arrow function cannot be changed.  In cases where you will need to bind to a
+    different value, you will still need to use a function expression. (sitepoint)
+
+Arrow functions are not ‘newable’. What this means is that arrow functions can
+not be used as constructors the same way other function can.(sitepoint)
+Arrow functions do not have a prototype property therefore if you attempt
+to use new with an arrow function, you will get an error.
+
+Arrow functions cannot be used as generators.  If you try to use yield with an
+ arrow function it will give you an error.
+
+	Arrow functions do not have their own arguments object therefore rest
+  parameters would need to be used instead.
+
+In Closing
+My limited experience in Javascript makes it hard for me to speak of the values
+and pitfalls of arrow functions with any sort of conviction.  What I do know
+is that there are some fairly strong feelings on both sides of the camp.
+Some feel that the limitations put on arrow functions make them ideal for
+certain, if not many scenarios. Other, however seem to view them as pointless
+at best and potentially hazardous as worst. Hopefully this little write will
+help you to understand them a bit more and come to your own conclusion on the matter.

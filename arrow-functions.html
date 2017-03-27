@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='blog-style.css' rel='stylesheet' type=text/css>
+    <title>Arrow Function</title>
+</head>
+
+<body>
+
+    <section class='jumbotron'></section>
+    <header class='page-header'>
+        <h1>Arrow Functions <small>in a nutshell</small></h1>
+
+    </header>
+    <main>
+        <h2>What are Arrow Functions?</h2>
+
+        <p>Arrow functions, also known as ‘fat arrow’ functions, were introduced in ES6 as a way to write small, inline, single purpose functions that can be be implicitly returned. Per <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions'>Mozilla</a>,
+            "Arrow functions do not bind its own this, arguments, super, or new.target.”.</a>
+        </p>
+        <br><br>
+        <h2>What do they look like?</h2>
+        <p>Let’s take a look at a typical random number generator function.</p>
+        <pre>function random(){
+      return Math.floor(Math.random()* 20)+ 1;
+      }</pre>
+        <br>
+        <p>As expected, this will return a random number between 1 and 20. But how might it look as an arrow function? When writing an arrow function, the first thing to remember is that it does not require the ‘function” keyword. And, because all arrow
+            function are anonymous it also doesn’t require a name. In fact you can’t name them! Instead you add in a ‘=>’ after the parameters.</p>
+        <br>
+        <p>This function will output the same as the one above it. In fact, we can take it one step further and make it even smaller.</P>
+        <pre>() => Math.floor(Math.random()* 20)+ 1;</pre>
+        <br><br>
+        <p>This is completely legal with arrow functions because they are implicitly returned when the return keyword and curly brackets are removed. To see this, we will need to store it in a variable and then we can call it just like any other function.
+        </p>
+        <pre>let random = () => Math.floor(Math.random()* 20)+ 1;
+      console.log( random() );
+      </pre>
+        <br>
+        <p>Keep in mind that implicit return ONLY happens for single <a href='https://strongloop.com/strongblog/an-introduction-to-javascript-es6-arrow-functions/'>statement arrow functions</a>. If curly brackets are used, return will not be implicit.
+        </p>
+        <p>Arrow functions can take parameters like regular functions too. </p>
+        <br><br>
+        <h3>SINGLE PARAMETER ARROW FUNCTION</h3>
+        <pre>let random = ( x ) => Math.floor(Math.random()* x )+ 1;
+      console.log( random(20) );</pre>
+        <br><br>
+        <h3>MULTIPLE PARAMETER ARROW FUNCTION</h3>
+        <pre>let random = ( x, y ) => Math.floor(Math.random()* (x * y) )+ 1;
+      console.log( random(4, 5) );</pre>
+        <br><br>
+        <h2>Other Things to Note</h2>
+        <p>So now that you see how arrow functions are written out, what else is there to know about them? Quite a lot. Despite their slim size, there is a lot to understand about arrow functions. That is beyond the scope of this blog but here are some key
+            points that I think are important.</p>
+        <br>
+        <h3>Lexical Binding</h3>
+        <p>The value of this inside of the function is <a href='https://www.nczonline.net/blog/2013/09/10/understanding-ecmascript-6-arrow-functions/'> determined by where the arrow function is defined</a> not where it is used. Also, this inside an arrow
+            function cannot be changed. In cases where you will need to bind to a different value, you <a href='https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/'>will still need to use a function expression</a>.
+        </p>
+        <br>
+        <h3>Not Constructors </h3>
+        <p>Arrow functions are not ‘newable’. What this means is that arrow functions can not be used as constructors the same way other function can. <a href='https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/'> Arrow functions do not have a prototype</a>            property therefore if you attempt to use new with an arrow function, you will get an error.</p>
+        <br>
+        <h3>Not Generators</h3>
+        <p>Arrow functions cannot be used as generators. If you try to use yield with an arrow function it will give you an error.</p>
+        <br>
+        <h3>No Argument Object</h3>
+        <p>Arrow functions do not have their own arguments object but rest parameters can still be used in most cases.</p>
+        <br>
+        <h2>In Closing</h2>
+        <p>My limited experience in Javascript makes it hard for me to speak of the values and pitfalls of arrow functions with any sort of conviction. What I do see is seemingly good reasoning, both for and against them. Some argue that arrow functions
+            are ideal in certain situations or even preferred in many scenarios. Others seem to view them as nearly pointless at best, arguing that there are plenty of other ways to do what arrow functions have been tasked with.
+            <br>
+            <p>Hopefully this little write-up will help you to understand them a bit more and come to your own conclusion on the matter. Either way, don't be shy about trying them out!</p>
+
+
+        </p>
+        <br><br>
+        <h4>Additonal Resources</h4>
+        <ul>
+            <li><a href='http://justinchmura.com/2015/09/16/3-gotchas-to-using-es6-arrow-functions/'>
+            "3 Gotchas Using ES6 Arrow Functions"
+          </a></li>
+            <li><a href='https://derickbailey.com/2015/09/28/do-es6-arrow-functions-really-solve-this-in-javascript/'>
+            "Do Arrow Functions Really Solve This"
+          </a></li>
+            <li><a href='https://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/'>
+            "ES6 Arrow Functions, Syntax and Lexical Scoping"
+          </a></li>
+            <li><a href='https://rainsoft.io/gentle-explanation-of-this-in-javascript/'>
+            "Gentle Explanation of This"
+          </a></li>
+            <li><a href='https://www.nczonline.net/blog/2013/09/10/understanding-ecmascript-6-arrow-functions/'>
+            "Understanding Ecmascript 6 Arrow Functions"
+          </a></li>
+            <li><a href='https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/'>
+            "ES6 Arrow Funcitions:The New Fat and Concise Syntax in Javascript"
+          </a></li>
+            <li><a href='http://wesbos.com/arrow-functions/'>
+            "Javascript Arrow Functions Introduction"
+          </a></li>
+            <li><a href='https://strongloop.com/strongblog/an-introduction-to-javascript-es6-arrow-functions/'>
+            "An Introduction to Javascript ES6 Arrow Functions"
+          </a></li>
+            <li><a href='https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/'>
+            "ES6 In Depth: Arrow Functions"
+          </a></li>
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions'>
+            "Arrow Functions"
+          </a></li>
+        </ul>
+
+        <section class='about'>
+            <img src='https://avatars2.githubusercontent.com/u/22016972?v=3&s=460' class='img-rounded' alt='Responsive image '>
+            <p class='bio'>Seth Brady is currently a student at <a href='theironyard.com'>The Iron Yard</a> in Washington D.C. learning Front-End Web Development.</p>
+        </section>
+    </main>
+
+
+
+    <footer>
+        <section class='row'>
+            <ul class='social-links'>
+                <li><a href='https://github.com/sethgabrielbrady'><i class='fa fa-github' aria-hidden='true'></i></a></li>
+                <li><a href='https://twitter.com/Sgbrady'><i class='fa fa-twitter' aria-hidden='true'></i></a></li>
+
+        </section>
+    </footer>
+
+
+
+
+    <script src='arrowfunc.js'></script>
+</body>
+
+</html>

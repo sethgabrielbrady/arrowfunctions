@@ -1,0 +1,76 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+body {
+  margin:auto 10%;
+}
+
+.jumbotron {
+  background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/f5/Dark_blue_arrow.png);
+  background-size: contain;
+  background-position: center;
+  margin: 5% auto;
+}
+header{
+  text-align: center;
+  font-size: 10em;
+}
+h1 {
+  font-size:.5em;
+}
+
+main {
+  margin:auto 10%;
+}
+pre{
+  font-size: 1.5em;
+  width:50em;
+}
+p{
+  font-size: 1.5em;
+  overflow: hidden;
+  max-width: 150ch;
+}
+
+ul {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+li{
+  font-size: 1.5em;
+}
+
+.about {
+  margin-top:2.5%;
+}
+.img-rounded {
+  margin:2.5% auto;
+  width:12%;
+  border-radius: 50%;
+  float:left;
+}
+.bio{
+  display:inline;
+  float:left;
+  text-align: center;
+  margin-top:4em;
+  margin-left:1em;
+}
+
+footer{
+  background-color: rgb(44, 99, 142);
+  margin:10% auto;
+  height:auto;
+  clear: left;
+}
+.social-links {
+    list-style: none;
+    float: right;
+    font-size: 3em;
+}
+
+.social-links li{
+    display:inline-block;
+    margin-right:.5em;
+}
